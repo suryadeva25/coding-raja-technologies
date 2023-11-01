@@ -1,0 +1,38 @@
+budget = {}
+def add_transaction():
+    category = input("Enter a category (e.g., rent, groceries, salary): ")
+    amount = float(input("Enter the amount: "))
+    
+    if category in budget:
+        budget[category] += amount
+    else:
+        budget[category] = amount
+    print(f"{category} - {amount} added to the budget.")
+
+# Function to display the current budget
+def show_budget():
+    if not budget:
+        print("No budget entries to display.")
+    else:
+        print("Current Budget:")
+        for category, amount in budget.items():
+            print(f"{category}: ${amount:.2f}")
+
+
+while True:
+    print("\nPersonal Budget Tracker")
+    print("1. Add Transaction")
+    print("2. Show Budget")
+    print("3. Quit")
+    
+    choice = input("Enter your choice (1/2/3): ")
+    
+    if choice == "1":
+        add_transaction()
+    elif choice == "2":
+        show_budget()
+    elif choice == "3":
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please enter a valid option.")
